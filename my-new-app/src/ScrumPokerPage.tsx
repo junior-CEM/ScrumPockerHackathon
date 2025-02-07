@@ -11,6 +11,7 @@ interface GameState {
     players: { [key: string]: Player };
     showVotes: boolean;
     taskName: string;
+    voteAverage: number | null;
 }
 
 const FIBONACCI_SEQUENCE = [1, 2, 3, 5, 8, 13, 21];
@@ -20,7 +21,8 @@ const ScrumPokerPage = () => {
     const [gameState, setGameState] = useState<GameState>({
         players: {},
         showVotes: false,
-        taskName: "Implement User Authentication"
+        taskName: "Implement User Authentication",
+        voteAverage: null
     });
     const [playerName, setPlayerName] = useState<string>("");
     const [isJoined, setIsJoined] = useState(false);
@@ -121,6 +123,17 @@ const ScrumPokerPage = () => {
                 marginBottom: '20px'
             }}>
                 {gameState.taskName}
+                {gameState.showVotes && gameState.voteAverage !== null && (
+                    <div style={{
+                        fontSize: '18px',
+                        marginTop: '10px',
+                        padding: '5px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        borderRadius: '4px'
+                    }}>
+                        Average Vote: {gameState.voteAverage}
+                    </div>
+                )}
             </div>
 
             <div style={{
