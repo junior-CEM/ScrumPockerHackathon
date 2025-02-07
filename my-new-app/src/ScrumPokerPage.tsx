@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { io, Socket } from 'socket.io-client';
+import io from 'socket.io-client';
 
 interface Player {
     id: string;
@@ -16,7 +16,7 @@ interface GameState {
 const FIBONACCI_SEQUENCE = [1, 2, 3, 5, 8, 13, 21];
 
 const ScrumPokerPage = () => {
-    const [socket, setSocket] = useState<Socket | null>(null);
+    const [socket, setSocket] = useState<any>(null);
     const [gameState, setGameState] = useState<GameState>({
         players: {},
         showVotes: false,
